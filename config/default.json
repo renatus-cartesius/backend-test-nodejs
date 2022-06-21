@@ -4,7 +4,8 @@
         "port": 3306,
         "user": "dude",
         "password": "pass",
-        "database": "backend_test"
+        "database": "backend_test",
+        "dialect": "mariadb"
     },
     "Server":{
         "Port": 8080

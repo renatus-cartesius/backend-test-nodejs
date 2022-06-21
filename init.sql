@@ -14,12 +14,12 @@ drop table if exists Users;
 set names utf8;
 create table  Users(
 	ID int not null auto_increment ,
-	Name varchar(255),
-	Surname varchar(255),
-	Phone varchar(255),
-	Email varchar(255),
-    Pass varchar(255),
-    Sex Enum("Муж", "Жен")
+	Name varchar(50),
+	Surname varchar(50),
+	Phone varchar(12),
+	Email varchar(100),
+    Pass varchar(20),
+    Sex Enum("Муж", "Жен"),
     Photo varchar(500),
     Creation_time datetime default CURRENT_TIMESTAMP,
 
