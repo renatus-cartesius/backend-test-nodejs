@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^3.0.0",
+    "mysql-orm": "^0.0.8",
+    "nodemon": "^2.0.16"
+  },
+  "name": "backend-test-nodejs",
+  "description": "Тестовое задание на позицию Backend разработчика",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renatus-cartesius/backend-test-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renatus-cartesius/backend-test-nodejs/issues"
+  },
+  "homepage": "https://github.com/renatus-cartesius/backend-test-nodejs#readme"
+}
