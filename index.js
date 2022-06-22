@@ -12,7 +12,7 @@ const app = express();
 app.get("/", (req, res)=>{res.sendFile(__dirname + "/static/html/index.html");})
 
 app.use(express.json());
-app.use("/user", UserRouter);
+app.use("/user", UserRouter);s
 app.use("/profile", ProfileRouter);
 
 console.log(JSON.stringify(sequelize.models.User));
