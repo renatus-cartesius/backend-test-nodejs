@@ -10,7 +10,7 @@ class ProfileRouter{
                 ID: parseInt(req.params.id)
             }
         })
-        if(!user){
+        if(!user || JSON.stringify(user) == "{}"){
             return res.send("Пользователь не найден");
         }
         res.send(user);
