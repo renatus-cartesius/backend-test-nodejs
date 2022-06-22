@@ -5,7 +5,7 @@ class ProfileRouter{
         if( !Number.isInteger(parseInt(req.params.id))){
             return res.send("Введен неправильный ID");
         }
-        const user = User.findOne({
+        const user = await User.findOne({
             where:{
                 ID: parseInt(req.params.id)
             }
@@ -14,6 +14,7 @@ class ProfileRouter{
             return res.send("Пользователь не найден");
         }
         res.send(user);
+
     }
 }
 module.exports = new ProfileRouter();

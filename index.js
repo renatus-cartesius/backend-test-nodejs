@@ -9,6 +9,8 @@ const { sequelize } = require("./controllers/DbController");
 
 const app = express();
 
+app.get("/", (req, res)=>{res.sendFile(__dirname + "/static/html/index.html");})
+
 app.use(express.json());
 app.use("/user", UserRouter);
 app.use("/profile", ProfileRouter);
