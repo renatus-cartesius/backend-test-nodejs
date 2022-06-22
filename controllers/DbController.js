@@ -1,9 +1,9 @@
 const config = require("config");
 const { Sequelize } = require("sequelize");
-const DB_Config = config.get('DB');
+const DB = config.get('DB');
 
 const sequelize = new Sequelize('backend_test', 'dude', 'pass', {
-	host: DB_Config.host,
+	host: DB.host,
 	dialect: 'mariadb'
 });
 

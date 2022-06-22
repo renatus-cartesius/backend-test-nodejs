@@ -1,4 +1,3 @@
-const c = require("config");
 const { DATE } = require("sequelize");
 const {Sequelize, DataTypes} = require("sequelize");
 const {sequelize} = require("../controllers/DbController");
@@ -10,8 +9,8 @@ const User = sequelize.define(
         Name: {type: DataTypes.STRING, allowNull: false},
 	    Surname: {type: DataTypes.STRING, allowNull: false},
 	    Phone: {type: DataTypes.STRING},
-	    Email: {type: DataTypes.STRING},
-        Pass: {type: DataTypes.STRING},
+	    Email: {type: DataTypes.STRING, allowNull: false},
+        Pass: {type: DataTypes.STRING, allowNull: false},
         Sex: {type: DataTypes.ENUM('Муж', 'Жен')},
         Photo: {type: DataTypes.STRING},
         Creation_time: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}

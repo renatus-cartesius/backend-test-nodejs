@@ -12,6 +12,9 @@ app.use(express.json());
 app.use("/user", UserRouter);
 app.use("/profile", UserRouter);
 
+
+
 app.listen(Port, ()=>{
     console.log(`[+] Server listenning on ${Port}`);
+
 });

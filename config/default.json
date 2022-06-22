@@ -9,5 +9,8 @@
     },
     "Server":{
         "Port": 8080
+    },
+    "Bcrypt":{
+        "SaltRounds": 10
     }
 }
