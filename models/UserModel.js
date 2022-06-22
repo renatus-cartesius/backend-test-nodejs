@@ -19,8 +19,10 @@ const User = sequelize.define(
         timestamps: false,
     }
 )
-
-console.log(User.sync({alter: true}));
+;(async () => {
+    // Пересоздаем таблицу в БД
+    await sequelize.sync({ alter: true })
+  })();
 
 module.exports = {
     User
