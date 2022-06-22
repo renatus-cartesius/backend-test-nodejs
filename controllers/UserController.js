@@ -40,12 +40,14 @@ class UserController{
         }   
     }
     async login(req, res){
+        console.log(req.body);
         try {
-            const {Email, Pass} = req.body;
             const user = await User.findOne({
-                where:{Email}
+                where:{
+                    Email: req.body.Email
+                }
             });
-            const truePass = bc.compareSync(Pass, user.Pass);
+            const truePass = bc.compareSync(req.body.Pass, user.Pass);
             if(!truePass || !user){
                 return res.send("Введен неверный email или пароль");
             }

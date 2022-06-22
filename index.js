@@ -14,10 +14,11 @@ app.get("/login", (req, res)=>{res.sendFile(__dirname + "/static/html/login.html
 app.get("/register", (req, res)=>{res.sendFile(__dirname + "/static/html/register.html");})
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 app.use("/user", UserRouter);
 app.use("/profile", ProfileRouter);
 
-console.log(JSON.stringify(sequelize.models.User));
 
 app.listen(Port, ()=>{
     console.log(`[+] Server listenning on ${Port}`);
