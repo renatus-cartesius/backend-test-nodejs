@@ -10,9 +10,11 @@ const { sequelize } = require("./controllers/DbController");
 const app = express();
 
 app.get("/", (req, res)=>{res.sendFile(__dirname + "/static/html/index.html");})
+app.get("/login", (req, res)=>{res.sendFile(__dirname + "/static/html/login.html");})
+app.get("/register", (req, res)=>{res.sendFile(__dirname + "/static/html/register.html");})
 
 app.use(express.json());
-app.use("/user", UserRouter);s
+app.use("/user", UserRouter);
 app.use("/profile", ProfileRouter);
 
 console.log(JSON.stringify(sequelize.models.User));
