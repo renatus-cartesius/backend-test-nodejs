@@ -12,5 +12,8 @@
     },
     "Bcrypt":{
         "SaltRounds": 10
+    },
+    "JWT":{
+        "Secret": "backend_test_task"
     }
 }

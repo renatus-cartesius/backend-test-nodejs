@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use("/user", UserRouter);
-app.use("/profile", UserRouter);
+app.use("/profile", ProfileRouter);
 
 console.log(JSON.stringify(sequelize.models.User));
 
