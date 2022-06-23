@@ -3,11 +3,10 @@ const { User } = require("../models/UserModel");
 const c = require("config");
 const jwt = require("jsonwebtoken");
 
-const genToken = (id) => {
-    const payload = {
-        id
-    }
-    return jwt.sign(payload, c.get("JWT").Secret, {expiresIn: "48h"});
+function genToken(ID){
+    return jwt.sign({
+        ID
+    }, c.get("JWT").Secret, {expiresIn: "48h"});
 }
 
 class UserController{
@@ -32,7 +31,7 @@ class UserController{
                         Pass: bc.hashSync(req.body.Pass, c.get("Bcrypt").SaltRounds).toString()
                     }
                 );
-                res.send("OK");
+                res.send("Вы успешно зарегистрированы!");
             } catch (error) {
                 console.log(error);
                 res.send(error);
@@ -40,7 +39,6 @@ class UserController{
         }   
     }
     async login(req, res){
-        console.log(req.body);
         try {
             const user = await User.findOne({
                 where:{
@@ -51,8 +49,8 @@ class UserController{
             if(!truePass || !user){
                 return res.send("Введен неверный email или пароль");
             }
-            const token = genToken(user.id);
-            return res.json({token});
+            const token = genToken(user.ID);
+            return res.json({message:"Вы успешно вошли в аккаунт!", token});
         } catch (error) {
             console.log(error);
             res.send("Ошибка при авторизации");

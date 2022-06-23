@@ -9,9 +9,9 @@ const User = sequelize.define(
         Name: {type: DataTypes.STRING, allowNull: false},
 	    Surname: {type: DataTypes.STRING, allowNull: false},
 	    Phone: {type: DataTypes.STRING},
-	    Email: {type: DataTypes.STRING, allowNull: false},
+	    Email: {type: DataTypes.STRING, allowNull: false, unique: true},
         Pass: {type: DataTypes.STRING, allowNull: false},
-        Sex: {type: DataTypes.ENUM('Муж', 'Жен')},
+        Sex: {type: DataTypes.ENUM('Мужской', 'Женский')},
         Photo: {type: DataTypes.STRING},
         Creation_time: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
     },
@@ -20,7 +20,7 @@ const User = sequelize.define(
     }
 )
 ;(async () => {
-    // Пересоздаем таблицу в БД
+    // Обновление таблицы
     await sequelize.sync({ alter: true })
   })();
 

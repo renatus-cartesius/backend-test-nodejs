@@ -1,6 +1,6 @@
 const express = require("express");
-const config = require("config");
-const Port = config.get("Server").Port;
+const c = require("config");
+const Port = c.get("Server").Port;
 
 const UserRouter = require("./routes/UserRouter");
 const ProfileRouter = require("./routes/ProfileRouter");
@@ -9,9 +9,9 @@ const { sequelize } = require("./controllers/DbController");
 
 const app = express();
 
-app.get("/", (req, res)=>{res.sendFile(__dirname + "/static/html/index.html");})
-app.get("/login", (req, res)=>{res.sendFile(__dirname + "/static/html/login.html");})
-app.get("/register", (req, res)=>{res.sendFile(__dirname + "/static/html/register.html");})
+app.get("/", (req, res)=>{res.sendFile(__dirname + "/static/html/index.html");});
+app.get("/login", (req, res)=>{res.sendFile(__dirname + "/static/html/login.html");});
+app.get("/register", (req, res)=>{res.sendFile(__dirname + "/static/html/register.html");});
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
