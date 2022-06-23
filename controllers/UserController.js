@@ -18,7 +18,7 @@ class UserController{
         });
     
         if(user){
-            res.send(`Пользователь с заданным Email уже существует: ${user.Email}`);
+            res.send({message: `Пользователь с заданным Email уже существует: ${user.Email}`} );
         }
         else{
             
@@ -31,7 +31,7 @@ class UserController{
                         Pass: bc.hashSync(req.body.Pass, c.get("Bcrypt").SaltRounds).toString()
                     }
                 );
-                res.send("Вы успешно зарегистрированы!");
+                res.send({message: "Вы успешно зарегистрированы!"} );
             } catch (error) {
                 console.log(error);
                 res.send(error);
@@ -47,13 +47,13 @@ class UserController{
             });
             const truePass = bc.compareSync(req.body.Pass, user.Pass);
             if(!truePass || !user){
-                return res.send("Введен неверный email или пароль");
+                return res.send({message: "Введен неверный email или пароль"});
             }
             const token = genToken(user.ID);
             return res.json({message:"Вы успешно вошли в аккаунт!", token});
         } catch (error) {
             console.log(error);
-            res.send("Ошибка при авторизации");
+            res.send({message: "Ошибка при авторизации"});
         }
     }
 }
