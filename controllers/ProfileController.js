@@ -2,6 +2,7 @@ const { User } = require("../models/UserModel");
 const c = require("config");
 
 class ProfileRouter{
+
     async get_user(req, res){
         if( !Number.isInteger(parseInt(req.params.id))){
             return res.send({message: "Введен неправильный ID"} );
@@ -17,6 +18,7 @@ class ProfileRouter{
         res.send(user);
 
     }
+
     async edit_user(req, res){
         if(req.body.Sex != "Мужской"){
             if(req.body.Sex != "Женский"){
@@ -44,6 +46,7 @@ class ProfileRouter{
             res.send({message: "Ошибка при редактировании"})
         }
     }
+
     async get_profile(req, res){
         try{
             const user = await User.findOne({
@@ -56,6 +59,15 @@ class ProfileRouter{
         }catch(error){
             console.log(error);
             return res.send({message: "Ошибка при авторизации"} );
+        }
+    }
+
+    async get_all_users(req, res){
+        try {
+            
+        } catch (error) {
+            console.log(error);
+            res.send({message: "Ошибка при получении всех пользователей"});
         }
     }
 }
