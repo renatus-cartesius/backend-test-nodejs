@@ -64,10 +64,20 @@ class ProfileRouter{
 
     async get_all_users(req, res){
         try {
+            const users = await User.findAll();
+            const usersPerPage = c.get("Paging").Count;
             
+            res.json({
+                usersPerPage,
+                usersCount: users.length,
+                pageNumber: parseInt(req.query.page),
+                users: users.slice(usersPerPage*(req.query.page - 1), req.query.page*usersPerPage).sort((prev, next)=>{ // Сортировка по времени создания
+                    return new Date(prev.Creation_time) - new Date(next.Creation_time);
+                })
+            });
         } catch (error) {
             console.log(error);
-            res.send({message: "Ошибка при получении всех пользователей"});
+            res.send({message: "Ошибка при получении пользователей"});
         }
     }
 }

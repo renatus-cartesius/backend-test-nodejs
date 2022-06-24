@@ -15,5 +15,8 @@
     },
     "JWT":{
         "Secret": "backend_test_task"
+    },
+    "Paging":{
+        "Count": 10
     }
 }

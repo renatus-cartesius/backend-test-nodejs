@@ -15,7 +15,6 @@ router.put("/set/:id",
     valid.body("Phone", "Введен неккоректный телефон").isMobilePhone(),
     ValidateMiddleware,  ProfileController.edit_user
 );
-router.get("/profiles", ProfileController.get_all_users);
 
 // Маршрут для тестирования функционала просмотра по JWT-токену
 router.get("/my", ProfileMiddleware, ProfileController.get_profile);

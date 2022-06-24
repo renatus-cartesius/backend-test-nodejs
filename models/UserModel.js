@@ -21,7 +21,7 @@ const User = sequelize.define(
 )
 ;(async () => {
     // Обновление таблицы
-    await sequelize.sync();
+    await sequelize.sync({alter: true});
   })();
 
 module.exports = {
