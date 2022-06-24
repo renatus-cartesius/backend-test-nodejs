@@ -16,6 +16,8 @@ router.put("/set/:id",
     ValidateMiddleware,  ProfileController.edit_user
 );
 
+router.post("/set_photo", ProfileMiddleware, ProfileController.set_photo);
+
 // Маршрут для тестирования функционала просмотра по JWT-токену
 router.get("/my", ProfileMiddleware, ProfileController.get_profile);
 

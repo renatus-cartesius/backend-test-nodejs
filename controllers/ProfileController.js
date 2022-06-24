@@ -1,6 +1,7 @@
 const { User } = require("../models/UserModel");
 const c = require("config");
 
+
 class ProfileRouter{
 
     async get_user(req, res){
@@ -78,6 +79,20 @@ class ProfileRouter{
         } catch (error) {
             console.log(error);
             res.send({message: "Ошибка при получении пользователей"});
+        }
+    }
+    async set_photo(req, res){
+        try{
+            let file_data = req.file;
+            if(!file_data){
+                res.send("Ошибка загрузки файла");
+            }
+            else{
+                res.send("Файл успешно загружен");
+            }
+        } catch(error){
+            console.log(error);
+            res.send("Ошибка загрузки файла");
         }
     }
 }

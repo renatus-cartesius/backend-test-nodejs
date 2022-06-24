@@ -8,16 +8,30 @@ const ProfileRouter = require("./routes/ProfileRouter");
 const { User } = require("./models/UserModel");
 const { sequelize } = require("./controllers/DbController");
 const ProfileController = require("./controllers/ProfileController");
+const ProfileMiddleware = require("./middleware/ProfileMiddleware");
+const multer = require("multer");
+
+// Конфигурация multer
+const storageConfig = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "static/images");
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now().toString());
+    }
+});
+app.use(multer({storage:storageConfig}).single("filedata"));
+
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/static"));
 
 app.get("/", (req, res)=>{res.sendFile(__dirname + "/static/html/index.html");});
 app.get("/login", (req, res)=>{res.sendFile(__dirname + "/static/html/login.html");});
 app.get("/register", (req, res)=>{res.sendFile(__dirname + "/static/html/register.html");});
-
 
 app.use("/user", UserRouter);
 app.use("/profile", ProfileRouter);
